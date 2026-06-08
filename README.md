@@ -3,6 +3,14 @@ https://www.udemy.com/course/spring-hibernate-tutorial
 
 ### Quickly create a starter Spring Boot project: http://start.spring.io
 
+## Running Spring Boot Apps
+* Spring Boot apps can be run standalone (includes embedded server)
+* Run the Spring Boot app from the IDE or command-line: java -jar mycoolapp.jar
+
+## Deploying Spring Boot Apps
+* Spring Boot apps can also be deployed in the traditional way.
+* Deploy WAR file to an external server: Tomcat, JBoss, WebSphere etc...
+
 # Why Spring Boot?
 * Makes it easier to get started with the Spring environment.
 * Minimize the amount of manuel configuration
