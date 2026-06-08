@@ -1,6 +1,8 @@
 # spring-boot-4-learning
 https://www.udemy.com/course/spring-hibernate-tutorial
 
+### Quickly create a starter Spring Boot project: http://start.spring.io
+
 # Why Spring Boot?
 * Makes it easier to get started with the Spring environment.
 * Minimize the amount of manuel configuration
