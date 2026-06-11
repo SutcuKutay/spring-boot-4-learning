@@ -1,3 +1,6 @@
+---------------------
+SECTION 1 - SPRING BOOT 4 QUICK START
+---------------------
 Spring Boot Actuator:
 - Exposes endpoints to monitor and manage your application
 - You easily get DevOps functionality out-of-the-box
@@ -64,3 +67,53 @@ Data properties
 		spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
 		spring.datasource.username=scott
 		spring.datasource.password=tiger
+
+---------------------
+SECTION 2 - SPRING CORE
+---------------------
+Inversion of Control (IoC)
+The approach of outsourcing the construction and management of objects.
+
+Dependency Injection
+The client delegates to another object the responsibility of providing its dependencies.
+
+Spring Container
+Primary functions:
+	- Create and manage objects (Inversion of Control)
+	- Inject object's dependencies (Dependency Injection)
+
+Injection Types
+Two recommended types of injection:
+	- Constructor Injection
+	- Setter Injection
+
+@SpringBootApplication (main java class) is composed of the following annotations:
+	- @EnableAutoConfiguration -> Enables Spring Boot's auto-configuration support.
+	- @ComponentScan -> Enables component scanning of current package. Also recursively scans sub-packages.
+	- @Configuration -> Able to register extra beans with @Bean or import other configuration classes.
+
+@Qualifier
+@Primary -> Out of the implementations this is the primary implementations that should Spring Boot use.
+Qualifier has higher priority.
+
+Lazy Initialization
+By default, when your application starts, all beans are initialized. Spring will create an instance of each and make
+them available.
+Instead of creating all beans up front, we can specify lazy initialization. A bean will only be initialized in the following cases:
+	- It is needed for dependency injection
+	- Or it is explicitly requested
+Add the @Lazy annotation to a given class
+OR
+Add this line to application.properties file for global configuration:
+	spring.main.lazy-initialization=true
+
+---------------------
+SECTION 3 - Hibernate/JPA CRUD
+---------------------
+What is Hibernate?
+A framework for persisting / saving Java objects in a database.
+Your Java App <-> Hibernate <-> Database
+
+What is JPA?
+Jakarta Persistence API(JPA)
+Standard API for Object-to-Relational-Mapping(ORM)
