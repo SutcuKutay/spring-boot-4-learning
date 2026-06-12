@@ -117,3 +117,72 @@ Your Java App <-> Hibernate <-> Database
 What is JPA?
 Jakarta Persistence API(JPA)
 Standard API for Object-to-Relational-Mapping(ORM)
+
+entityManager.merge(object); -> If id == 0 then insert/save else update
+
+---------------------
+SECTION 4 - REST CRUD APIs
+---------------------
+REST: REpresentational State Transfer
+Lightweight approach for communicating between applications
+
+Java JSON Data Binding
+Data binding is the process of converting JSON data to a Java POJO
+Spring uses the Jackson Project behind the scenes
+Jackson handles data binding between JSON and Java POJO
+
+REST Exception Handling
+	1- Create a custom error response class
+	2- Create a custom exception class
+	3- Update REST service to throw exception if student not found
+	4- Add an exception handler using @ExceptionHandler
+For global;
+	1- Create new @ControllerAdvice
+	2- Refactor REST service ... remove exception handling code
+	3- Add exception handling code to @ControllerAdvice
+
+REST API Design - Best Practices
+	1- Review API requirements
+	2- Identify main resource / entity
+	3- Use HTTP methods to assign action on resource
+1-REST clients should be able to
+-Get a list of employees
+-Get a single employee by id
+-Add a new employee
+-Update an employee
+-Delete an employee
+2-To identify main resource / entity, look for the most prominent "noun"
+For our project, it is "employee"
+Convention is to use plural form of resource / entity: employees
+/api/employees
+3-
+POST -> Create a new entity -> /api/employees
+GET -> Read a list of entities or single entity -> /api/employees or /api/employees/{employeeId}
+PUT -> Update an existing entity -> /api/employees
+DELETE -> Delete an existing entity -> /api/employees/{employeeId}
+
+Spring Data REST
+Leverages your existing JpaRepository
+Spring will give you a REST CRUD implementation for FREE ... like MAGIC!!!
+Simple pluralized form
+	First character of Entity type is lowercase
+	Then just adds an "s" to the entity
+		JpaRepository<Employee, Integer> -> /employees
+Only need 3 items:
+	- Your entity: Employee
+	- JpaRepository: EmployeeRepository extends JpaRepository<Employee, Integer>
+	- Maven POM dependency for: spring-boot-starter-data-rest
+For UPDATE, Spring Data REST only uses ID on the URL, /employees/4 dont put "id" on JSON request body
+@RepositoryRestResource(path="members")
+public interface EmployeeRepository extends JpaRepository... -> custom path name. This way Spring does not automatically generate a "employees" path.
+By default, Spring Data REST will return the first 20 elements
+	Page size = 20
+You can navigate to the different pages of data using query param
+	http://localhost:8080/employees?page=0
+	http://localhost:8080/employees?page=1 Pages are zero-based
+Following properties available: application.properties
+	-spring.data.rest.base-path -> Base path used to expose repository resources
+	-spring.data.rest.default-page-size -> Default size of pages
+	-spring.data.rest.max-page-size -> Maximum size of pages
+Sort by last name
+	http://localhost:8080/employees?sort=lastName,firstName,desc (default asc)
