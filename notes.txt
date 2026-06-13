@@ -186,3 +186,15 @@ Following properties available: application.properties
 	-spring.data.rest.max-page-size -> Maximum size of pages
 Sort by last name
 	http://localhost:8080/employees?sort=lastName,firstName,desc (default asc)
+
+---------------------
+SECTION 5 - REST API Security
+---------------------
+Default Spring Security Database Schema
+users table
+	username (Primary Key)
+	password
+	enabled
+authorities table
+	username (Foreign Key users table username)
+	authority
